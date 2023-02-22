@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
+    // <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <Link className="navbar-brand" to="/">
         {props.title}
@@ -26,17 +27,19 @@ export default function Navbar(props) {
           </li>
         </ul>
         <div>
+          <button className="btn mx-2 my-2 p-3" style={{ backgroundColor: "black" }} onClick={() => props.additionDarkModes("dark")}></button>
+          <button className="btn mx-2 my-2 p-3" style={{ backgroundColor: "white" }} onClick={() => props.additionDarkModes("light")}></button>
           <button className="btn mx-2 my-2 p-3" style={{ backgroundColor: "grey" }} onClick={() => props.additionDarkModes("grey")}></button>
           <button className="btn my-2 p-3" style={{ backgroundColor: "purple" }} onClick={() => props.additionDarkModes("purple")}></button>
           <button className="btn mx-2 my-2 p-3" style={{ backgroundColor: "white" }} onClick={() => props.additionDarkModes("white")}></button>
           <button className="btn mx-2 my-2 p-3" style={{ backgroundColor: "red" }} onClick={() => props.additionDarkModes("red")}></button>
         </div>
-        <div className={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"}`}>
+        {/* <div className={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"}`}>
           <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault" />
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             enable Dark Mode
           </label>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

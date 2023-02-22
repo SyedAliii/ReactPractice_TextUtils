@@ -21,31 +21,39 @@ function App() {
     }, 1500);
   };
 
-  const toggleMode = () => {
-    if (mode === "light") {
-      setMode("dark");
-      document.body.style.backgroundColor = "black";
-      showAlert("Dark Mode has been enabled", "success");
-      document.title = "TextUtils: Dark Mode";
-      // setInterval(() => {
-      //   document.title = "TextUtils is Amazing Mode "
-      // }, 2000);
-      // setInterval(() => {
-      //   document.title = "Install TextUtils Now"
-      // }, 1000);
-    } else {
-      setMode("light");
-      document.body.style.backgroundColor = "white";
-      showAlert("Light Mode has been enabled", "success");
-      document.title = "TextUtils: Light Mode";
-    }
-  };
+  // const toggleMode = () => {
+  //   if (mode === "light") {
+  //     setMode("dark");
+  //     document.body.style.backgroundColor = "black";
+  //     showAlert("Dark Mode has been enabled", "success");
+  //     // document.title = "TextUtils: Dark Mode";
+  //     // setInterval(() => {
+  //     //   document.title = "TextUtils is Amazing Mode "
+  //     // }, 2000);
+  //     // setInterval(() => {
+  //     //   document.title = "Install TextUtils Now"
+  //     // }, 1000);
+  //   } else {
+  //     setMode("light");
+  //     document.body.style.backgroundColor = "white";
+  //     showAlert("Light Mode has been enabled", "success");
+  //     // document.title = "TextUtils: Light Mode";
+  //   }
+  // };
+
+  // const removeBodyClasses = () => {
+  //   document.body.classList.remove('bg-light')
+  //   document.body.classList.remove('bg-dark')
+  //   document.body.classList.remove('bg-warning')
+  //   document.body.classList.remove('bg-success')
+  // }
 
   const additionDarkModes = (modeName) => {
     if (modeName === "grey") {
       setMode("grey");
       document.body.style.backgroundColor = "grey";
       showAlert("Grey Mode has been enabled", "success");
+      // document.body.classList.add('bg-' + modeName);
     } else if (modeName === "purple") {
       setMode("purple");
       document.body.style.backgroundColor = "purple";
@@ -58,6 +66,14 @@ function App() {
       setMode("red");
       document.body.style.backgroundColor = "red";
       showAlert("red Mode has been enabled", "success");
+    } else if (modeName === "light") {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+      showAlert("light Mode has been enabled", "success");
+    } else if (modeName === "dark") {
+      setMode("dark");
+      document.body.style.backgroundColor = "black";
+      showAlert("dark Mode has been enabled", "success");
     }
   };
 
@@ -65,11 +81,12 @@ function App() {
     <>
       <Router>
         <Alert alert={alert} />
-        <Navbar title={"TextUtils"} mode={mode} toggleMode={toggleMode} additionDarkModes={additionDarkModes} />
+        {/* <Navbar title={"TextUtils"} mode={mode} toggleMode={toggleMode} additionDarkModes={additionDarkModes} /> */}
+        <Navbar title={"TextUtils"} mode={mode} additionDarkModes={additionDarkModes} />
         <div className="container my-3">
           <Routes>
             <Route exact path="/about" element={<About mode={mode} />} />
-            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} />
+            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Remove extra Spaces" mode={mode} />} />
           </Routes>
         </div>
       </Router>
